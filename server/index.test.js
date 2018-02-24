@@ -20,4 +20,30 @@ describe('Chat server', () => {
       done();
     });
   });
+  it('should exceeded max user limit', done => {
+    const client1 = io.connect(socketURL, options);
+    const client2 = io.connect(socketURL, options);
+    const client3 = io.connect(socketURL, options);
+    expect.assertions(1);
+    client3.on('maximum user number exceeded', res => {
+      expect(res).toBe(config.userLimit);
+      client1.disconnect();
+      client2.disconnect();
+      done();
+    });
+  });
+  it('client2 should recive new message', done => {
+    const client1 = io.connect(socketURL, options);
+    const client2 = io.connect(socketURL, options);
+    const msg = 'Hello!';
+    expect.assertions(2);
+    client2.on('connect', () => {
+      client1.emit('new message', msg);
+    });
+    client2.on('new message', ({ message, username }) => {
+      expect(message).toBe(msg);
+      expect(username).toBe('User1');
+      done();
+    });
+  });
 });
