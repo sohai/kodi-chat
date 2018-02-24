@@ -43,6 +43,41 @@ describe('Chat server', () => {
     client2.on('new message', ({ message, username }) => {
       expect(message).toBe(msg);
       expect(username).toBe('User1');
+      client1.disconnect();
+      client2.disconnect();
+      done();
+    });
+  });
+  it('client2 should recive new name of client1', done => {
+    const client1 = io.connect(socketURL, options);
+    const client2 = io.connect(socketURL, options);
+    const name = 'Chat user 1';
+    expect.assertions(1);
+    client2.on('connect', () => {
+      client1.emit('set name', name);
+    });
+    client2.on('new name', ({ username }) => {
+      expect(username).toBe(name);
+      client1.disconnect();
+      client2.disconnect();
+      done();
+    });
+  });
+  it('client2 should recive typing and stop typing event', done => {
+    const client1 = io.connect(socketURL, options);
+    const client2 = io.connect(socketURL, options);
+    expect.assertions(2);
+    client2.on('connect', () => {
+      client1.emit('typing');
+      client1.emit('stop typing');
+    });
+    client2.on('typing', ({ username }) => {
+      expect(username).toBe('User1');
+    });
+    client2.on('stop typing', ({ username }) => {
+      expect(username).toBe('User1');
+      client1.disconnect();
+      client2.disconnect();
       done();
     });
   });

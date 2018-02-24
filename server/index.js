@@ -32,6 +32,12 @@ io.on('connection', socket => {
       message: data
     });
   });
+  socket.on('set name', data => {
+    socket.username = data;
+    socket.broadcast.emit('new name', {
+      username: socket.username
+    });
+  });
   socket.on('typing', () => {
     socket.broadcast.emit('typing', {
       username: socket.username
