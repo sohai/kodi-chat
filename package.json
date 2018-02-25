@@ -6,6 +6,9 @@
   "author": "Wojciech Wasik",
   "license": "MIT",
   "jest": {
+    "testMatch": [
+      "<rootDir>/server/**/*.test.js"
+    ],
     "setupFiles": [
       "<rootDir>/client/test/setup.js"
     ],

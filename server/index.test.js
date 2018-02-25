@@ -11,13 +11,16 @@ const options = {
   'force new connection': true
 };
 
-xdescribe('Chat server', () => {
+describe('Chat server', () => {
   it('client should be able to connet', done => {
     const client = io.connect(socketURL, options);
 
-    client.on('connect', function() {
-      client.disconnect();
-      done();
+    client.on('connect', () => {
+      client.on('init', res => {
+        expect(res).toBe('User1');
+        client.disconnect();
+        done();
+      });
     });
   });
   it('should exceeded max user limit', done => {
@@ -31,6 +34,17 @@ xdescribe('Chat server', () => {
       client2.disconnect();
       done();
     });
+  });
+  it('client1 should recive user joined event', done => {
+    const client1 = io.connect(socketURL, options);
+    expect.assertions(1);
+    client1.on('joined', res => {
+      expect(res).toBe('User2');
+      client1.disconnect();
+      client2.disconnect();
+      done();
+    });
+    const client2 = io.connect(socketURL, options);
   });
   it('client2 should recive new message', done => {
     const client1 = io.connect(socketURL, options);
