@@ -7,6 +7,7 @@ import configureStore from './store';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import Messages from './containers/Messages';
+import UsersInfo from './containers/Users';
 const store = configureStore();
 
 const Index = () => (
@@ -16,6 +17,7 @@ const Index = () => (
         <div className="root">
           <header className="app-bar">
             <h1>Kodify Chat</h1>
+            <UsersInfo />
           </header>
           <Messages />
           <TextInput />

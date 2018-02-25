@@ -27,6 +27,9 @@ export const mapDispatchToProps = dispatch =>
 
 TextInputRender.propTypes = propTypes;
 TextInputRender.displayName = 'TextInput';
+
+const isCommand = msg => msg.charAt(0) === '/';
+
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withState('value', 'updateValue', ''),
@@ -36,13 +39,18 @@ export default compose(
     },
     onKeyPress: props => event => {
       if (event.key === 'Enter') {
-        const { value, username, updateValue } = props;
-        props.addMessage({
-          username,
-          message: value
-        });
-        proxy.emit('new message', value);
-        updateValue('');
+        const { value } = props;
+        if (isCommand(props.value)) {
+          console.log('command');
+        } else if (props.value) {
+          const { username, updateValue } = props;
+          props.addMessage({
+            username,
+            message: value
+          });
+          proxy.emit('new message', value);
+          updateValue('');
+        }
       }
     }
   }),
