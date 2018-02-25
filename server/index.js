@@ -1,5 +1,5 @@
 import express from 'express';
-import config from './config';
+import config from '../config';
 import http from 'http';
 import socketIO from 'socket.io';
 
@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 let userCounter = 0;
-
+const userToSocketMap = {};
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
@@ -24,8 +24,13 @@ io.on('connection', socket => {
   }
   userCounter++;
   socket.username = `User${userCounter}`;
-
-  socket.on('disconnect', () => userCounter--);
+  const initMsg = [socket.username, ...Object.keys(userToSocketMap)].join(',');
+  userToSocketMap[socket.username] = socket;
+  socket.emit('init', initMsg);
+  socket.on('disconnect', () => {
+    delete userToSocketMap[socket.username];
+    userCounter--;
+  });
   socket.on('new message', data => {
     socket.broadcast.emit('new message', {
       username: socket.username,

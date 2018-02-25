@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Component) TextInput should render 1`] = `
+<div
+  class="root"
+>
+  <input
+    class="input"
+  />
+</div>
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Component) TextInput should render with default props 1`] = `
+<div
+  className="root dark"
+>
+  Typography default
+</div>
+`;
+
+exports[`(Component) TextInput should render with given color variant and component 1`] = `
+<span
+  className="root light display1"
+>
+  Typography with props
+</span>
+`;

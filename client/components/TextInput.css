@@ -1,0 +1,13 @@
+.root {
+  height: 35px;
+}
+.input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 0;
+}
+.input:focus {
+  outline: none;
+}

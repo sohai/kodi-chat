@@ -26,9 +26,6 @@ body {
   justify-content: flex-end;
   flex: 1;
 }
-.footer {
-  height: 35px;
-}
 .message {
   width: 70%;
   background-color: #ccc;
@@ -37,10 +34,4 @@ body {
 .incoming {
   align-self: flex-end
 }
-.input {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  border: 0;
-}
+
