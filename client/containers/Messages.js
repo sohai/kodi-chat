@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MessagesList from '../components/MessagesList';
+import messagesSelectores from '../store/selectors/messages';
 
 const propTypes = PropTypes && {};
 
@@ -12,14 +13,13 @@ export const MessagesRender = ({ messages }) => (
 );
 
 export const mapStateToProps = state => ({
-  messages: state.messages
+  messages: messagesSelectores.items(state)
 });
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators({
     // put action creator here:
     // removeFoo: fooHandlers.actions.remove
-
     dispatch
   });
 

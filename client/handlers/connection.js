@@ -26,8 +26,11 @@ const startAndSubscribe = url => async dispatch => {
     subscribe(proxy, 'maximum user number exceeded', () =>
       dispatch(actions.error('Too many user'))
     );
-    subscribe(proxy, 'new message', (msg) =>
+    subscribe(proxy, 'new message', msg =>
       dispatch(messageHandler.actions.incMessage(msg))
+    );
+    subscribe(proxy, 'joined', username =>
+      dispatch(usersHandler.actions.join(username))
     );
   } catch (e) {
     // dispatch(actions.error('Error during connection :('));

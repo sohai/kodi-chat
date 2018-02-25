@@ -11,7 +11,7 @@ const defaultState = {
   }
 };
 
-const actions = createActions('INIT');
+const actions = createActions('INIT', 'JOIN');
 
 const toInitState = (state, action) => {
   const splitted = action.payload.split(',');
@@ -29,9 +29,18 @@ const toInitState = (state, action) => {
   };
 };
 
+const join = (state, action) => ({
+  ...state,
+  contact: {
+    available: true,
+    name: action.payload
+  }
+});
+
 const reducer = handleActions(
   {
-    [actions.init]: toInitState
+    [actions.init]: toInitState,
+    [actions.join]: join
   },
   defaultState
 );

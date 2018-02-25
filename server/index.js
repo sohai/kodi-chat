@@ -27,6 +27,7 @@ io.on('connection', socket => {
   const initMsg = [socket.username, ...Object.keys(userToSocketMap)].join(',');
   userToSocketMap[socket.username] = socket;
   socket.emit('init', initMsg);
+  socket.broadcast.emit('joined', socket.username);
   socket.on('disconnect', () => {
     delete userToSocketMap[socket.username];
     userCounter--;

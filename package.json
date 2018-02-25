@@ -41,6 +41,7 @@
     "classnames": "^2.2.5",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "lodash": "^4.17.5",
     "pm2": "^2.10.1",
     "prop-types": "^15.6.0",
     "react": "^16.3.0-alpha.1",
@@ -51,6 +52,7 @@
     "redux-actions": "^2.2.1",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "webpack": "^3.11.0"

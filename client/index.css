@@ -26,12 +26,5 @@ body {
   justify-content: flex-end;
   flex: 1;
 }
-.message {
-  width: 70%;
-  background-color: #ccc;
-  margin: 10px
-}
-.incoming {
-  align-self: flex-end
-}
+
 
