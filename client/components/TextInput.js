@@ -9,13 +9,13 @@ const propTypes =
   };
 const defaultProps = {};
 
-export const TextInputComponent = ({ value, onChange, onEnter }) => (
+export const TextInput = ({ value, onChange, onKeyPress }) => (
   <div className={styles.root}>
-    <input className={styles.input} value={value} onChange={onChange} onKeyPress={onEnter} />
+    <input className={styles.input} value={value} onChange={onChange} onKeyPress={onKeyPress} />
   </div>
 );
 
-TextInputComponent.displayName = 'TextInput';
-TextInputComponent.propTypes = propTypes;
-TextInputComponent.defaultProps = defaultProps;
-export default TextInputComponent;
+TextInput.displayName = 'TextInput';
+TextInput.propTypes = propTypes;
+TextInput.defaultProps = defaultProps;
+export default TextInput;

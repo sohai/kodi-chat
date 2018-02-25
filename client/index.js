@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '!style-loader!css-loader!./index.css';
 import ConnectionProvider from './containers/ConnectionProvider';
-import TextInputComponent from './components/TextInput';
+import TextInput from './containers/TextInput';
 import configureStore from './store';
 import { Provider } from 'react-redux';
 import App from './containers/App';
+import Messages from './containers/Messages';
 const store = configureStore();
 
 const Index = () => (
@@ -16,12 +17,8 @@ const Index = () => (
           <header className="app-bar">
             <h1>Kodify Chat</h1>
           </header>
-          <div className="content">
-            <div className="message outgoing">Messages</div>
-            <div className="message incoming">Messages1</div>
-            <div className="message outgoing">Messages2ge </div>
-          </div>
-          <TextInputComponent />
+          <Messages />
+          <TextInput />
         </div>
       </App>
     </ConnectionProvider>
