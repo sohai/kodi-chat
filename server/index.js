@@ -32,27 +32,22 @@ io.on('connection', socket => {
     delete userToSocketMap[socket.username];
     userCounter--;
   });
-  socket.on('new message', data => {
+  socket.on('new message', ({message, variant}) => {
     socket.broadcast.emit('new message', {
       username: socket.username,
-      message: data
+      message,
+      variant
     });
   });
   socket.on('set name', data => {
     socket.username = data;
-    socket.broadcast.emit('new name', {
-      username: socket.username
-    });
+    socket.broadcast.emit('new name', socket.username);
   });
-  socket.on('typing', () => {
-    socket.broadcast.emit('typing', {
-      username: socket.username
-    });
+  socket.on('oops', () => {
+    socket.broadcast.emit('oops', socket.username);
   });
-  socket.on('stop typing', () => {
-    socket.broadcast.emit('stop typing', {
-      username: socket.username
-    });
+  socket.on('typing', (isTyping) => {
+    socket.broadcast.emit('typing', isTyping);
   });
 });
 

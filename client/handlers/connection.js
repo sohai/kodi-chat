@@ -32,6 +32,15 @@ const startAndSubscribe = url => async dispatch => {
     subscribe(proxy, 'joined', username =>
       dispatch(usersHandler.actions.join(username))
     );
+    subscribe(proxy, 'new name', username =>
+      dispatch(usersHandler.actions.contactName(username))
+    );
+    subscribe(proxy, 'oops', username =>
+      dispatch(messageHandler.actions.removeUserLastMessage(username))
+    );
+    subscribe(proxy, 'typing', isTyping =>
+      dispatch(usersHandler.actions.typing(isTyping))
+    );
   } catch (e) {
     // dispatch(actions.error('Error during connection :('));
   }

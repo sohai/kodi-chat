@@ -5,15 +5,19 @@ import classNames from 'classnames';
 
 const propTypes = PropTypes && {
   color: PropTypes.oneOf(['light', 'dark']),
-  variant: PropTypes.oneOf(['display1', 'body']),
+  variant: PropTypes.oneOf(['display1', 'body', 'caption']),
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  children: PropTypes.node
+  children: PropTypes.node,
+  fade: PropTypes.bool,
+  align: PropTypes.oneOf(['left', 'right'])
 };
 
 const defaultProps = {
   color: 'dark',
   variant: 'body',
-  component: 'div'
+  component: 'div',
+  fade: false,
+  align: 'left'
 };
 
 const Typography = ({
@@ -21,6 +25,8 @@ const Typography = ({
   color,
   variant,
   component: Component,
+  fade,
+  align,
   ...rest
 }) => {
   const className = classNames(
@@ -28,7 +34,10 @@ const Typography = ({
     {
       [styles.light]: color === 'light',
       [styles.dark]: color === 'dark',
-      [styles.display1]: variant === 'display1'
+      [styles.display1]: variant === 'display1',
+      [styles.caption]: variant === 'caption',
+      [styles.fade]: fade,
+      [styles.alignRight]: align === 'right'
     },
     classNameProp
   );
