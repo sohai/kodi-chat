@@ -10,7 +10,8 @@ export const ConnectionProviderRender = ({ children }) => children;
 
 export const mapStateToProps = state => ({
   available: state.connection.available,
-  pending: state.connection.pending
+  pending: state.connection.pending,
+  error: state.connection.error
 });
 export const lifecycleHooks = lifecycle({
   componentDidMount() {

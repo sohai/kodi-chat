@@ -3,22 +3,32 @@ import { pending, rejected, fulfilled } from '../utils/redux/promise';
 import { start, stop, subscribe } from '../providers/ws';
 import proxy from '../providers/ws';
 import usersHandler from './users';
+import messageHandler from './messages';
 
 const defaultState = {
   available: false,
-  pending: false,
+  pending: true,
   error: null
 };
 
-const actions = createActions({
-  START: start,
-  STOP: stop
-});
+const actions = createActions(
+  {
+    START: start,
+    STOP: stop
+  },
+  'ERROR'
+);
 
 const startAndSubscribe = url => async dispatch => {
   try {
     await dispatch(actions.start(url));
     subscribe(proxy, 'init', ev => dispatch(usersHandler.actions.init(ev)));
+    subscribe(proxy, 'maximum user number exceeded', () =>
+      dispatch(actions.error('Too many user'))
+    );
+    subscribe(proxy, 'new message', (msg) =>
+      dispatch(messageHandler.actions.incMessage(msg))
+    );
   } catch (e) {
     // dispatch(actions.error('Error during connection :('));
   }
@@ -40,6 +50,10 @@ const toRejectedState = () => ({
   ...defaultState,
   error: 'Error during connection :('
 });
+const toErrorState = (state, action) => ({
+  ...state,
+  error: action.payload
+});
 
 const reducer = handleActions(
   {
@@ -49,7 +63,8 @@ const reducer = handleActions(
 
     [pending(actions.stop)]: toPendingState,
     [rejected(actions.stop)]: toRejectedState,
-    [fulfilled(actions.stop)]: toDefaultState
+    [fulfilled(actions.stop)]: toDefaultState,
+    [actions.error]: toErrorState
   },
   defaultState
 );

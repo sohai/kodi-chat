@@ -2,15 +2,13 @@
 /* eslint-disable import/first */
 import React from 'react';
 
-import {
-  ConnectionProviderRender,
-  mapStateToProps,
-  mapDispatchToProps
-} from './ConnectionProvider';
+import createStore from '../stores'; // TODO: fix relative
+
+import { AppRender, mapStateToProps, mapDispatchToProps } from './App';
 
 const store = createStore();
 
-describe('(Container) ConnectionProvider', () => {
+describe('(Container) App', () => {
   const state = store.getState();
   const initialProps = mapStateToProps(state);
   const initialActions = mapDispatchToProps(x => x);
@@ -28,9 +26,7 @@ describe('(Container) ConnectionProvider', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow(<ConnectionProviderRender {...props} />, {
-      context: { store }
-    });
+    const wrapper = shallow(<AppRender {...props} />, { context: { store } });
     expect(wrapper).toMatchSnapshot();
   });
 });
