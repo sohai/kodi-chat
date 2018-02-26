@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "dev-server": "pm2 start server/index.js --interpreter babel-node",
+    "dev": "pm2 start server/index.js --interpreter babel-node",
     "test": "jest --forceExit",
     "webpack": "webpack -wd"
   },
