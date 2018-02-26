@@ -2,27 +2,21 @@
 /* eslint-disable import/first */
 import React from 'react';
 
-import createStore from '../stores'; // TODO: fix relative
+import createStore from '../store';
 
-import { AppRender, mapStateToProps, mapDispatchToProps } from './App';
+import { AppRender, mapStateToProps } from './App';
 
 const store = createStore();
 
 describe('(Container) App', () => {
   const state = store.getState();
   const initialProps = mapStateToProps(state);
-  const initialActions = mapDispatchToProps(x => x);
   const props = {
-    ...initialActions,
     ...initialProps
   };
 
   it('will receive right props', () => {
     expect(initialProps).toMatchSnapshot();
-  });
-
-  it('will receive right actions', () => {
-    expect(initialActions).toMatchSnapshot();
   });
 
   it('should render', () => {

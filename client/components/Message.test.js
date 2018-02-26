@@ -1,20 +1,18 @@
-/* global shallow, render, describe, it, expect */
+/* global render, describe, it, expect */
 /* eslint-disable import/first */
 import React from 'react';
-import { MuiThemeProvider } from 'material-ui/styles';
-import theme from '../../theme/theme';
 import Message from './Message';
 
 describe('(Component) Message', () => {
   it('should render', () => {
     const props = {
-      children: <span>test</span>
+      item: {
+        type: 'inc',
+        message: 'message',
+        thinking: 'thinking'
+      }
     };
-    const wrapper = render(
-      <MuiThemeProvider theme={theme}>
-        <Message {...props} />
-      </MuiThemeProvider>
-    );
+    const wrapper = render(<Message {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

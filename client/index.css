@@ -9,17 +9,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f1f1f1;
 }
-.root {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.app-bar {
-  display: flex;
-  height: 60px;
-  background-color: #2196f3;
-  color: #fff;
-}
+
 .content {
   display: flex;
   flex-direction: column;

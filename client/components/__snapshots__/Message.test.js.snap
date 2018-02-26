@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Component) Message should render 1`] = `
+<div
+  class="message incoming"
+>
+  <div
+    class="root dark"
+  >
+    <span>
+      message
+    </span>
+  </div>
+  <div
+    class="root dark caption fade alignRight"
+  />
+</div>
+`;

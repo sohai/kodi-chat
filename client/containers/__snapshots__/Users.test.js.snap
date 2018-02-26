@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Container) Users should render 1`] = `
+<pure(UsersInfo)
+  contact={
+    Object {
+      "available": false,
+      "name": "",
+      "typing": false,
+    }
+  }
+  you={
+    Object {
+      "available": false,
+      "name": "",
+    }
+  }
+/>
+`;
+
+exports[`(Container) Users will receive right props 1`] = `
+Object {
+  "contact": Object {
+    "available": false,
+    "name": "",
+    "typing": false,
+  },
+  "you": Object {
+    "available": false,
+    "name": "",
+  },
+}
+`;

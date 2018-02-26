@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Container) Messages should render 1`] = `
+<pure(MessagesList)
+  items={Array []}
+/>
+`;
+
+exports[`(Container) Messages will receive right actions 1`] = `
+Object {
+  "dispatch": [Function],
+}
+`;
+
+exports[`(Container) Messages will receive right props 1`] = `
+Object {
+  "messages": Array [],
+}
+`;

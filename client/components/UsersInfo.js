@@ -1,13 +1,12 @@
 import React from 'react';
 import { pure, compose } from 'recompact';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 const propTypes = PropTypes && {};
 const defaultProps = {};
 
 export const UsersInfoComponent = ({ you, contact }) => (
-  <div className={classNames('asd')}>
+  <div>
     You({you.name}) are talking with {contact.name || 'noone'}
   </div>
 );

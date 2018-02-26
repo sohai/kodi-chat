@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Overlay from '../components/Overlay';
 import Typography from '../components/Typography';
+import styles from './App.css';
 
 const propTypes = PropTypes && {};
 
@@ -17,7 +18,9 @@ const fullPageInfo = info => () => (
 
 const LoadingOverlay = fullPageInfo('Loading...');
 
-export const AppRender = ({ children, error }) => error!==null ? React.createElement(fullPageInfo(error)) : children;
+export const AppRender = ({ children, error }) => error!==null ? React.createElement(fullPageInfo(error)) : (
+  <div className={styles.root}>{children}</div>
+);
 
 export const mapStateToProps = state => ({
   pending: state.connection.pending,

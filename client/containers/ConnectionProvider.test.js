@@ -1,7 +1,7 @@
 /* global shallow describe it expect */
 /* eslint-disable import/first */
 import React from 'react';
-
+import createStore from '../store';
 import {
   ConnectionProviderRender,
   mapStateToProps,

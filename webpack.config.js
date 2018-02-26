@@ -4,7 +4,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   entry: {
-    vendor: ['babel-polyfill', 'react', 'react-dom'],
+    vendor: [
+      'babel-polyfill',
+      'react',
+      'react-dom',
+      'lodash',
+      'prop-types',
+      'recompact',
+      'redux',
+      'redux-actions',
+      'redux-thunk',
+      'reselect',
+      'redux-promise-middleware',
+      'react-redux',
+      'socket.io-client',
+      'classnames'
+    ],
     app: ['./client/index.js']
   },
   output: {

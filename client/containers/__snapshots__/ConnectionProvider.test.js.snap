@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Container) ConnectionProvider should render 1`] = `""`;
+
+exports[`(Container) ConnectionProvider will receive right actions 1`] = `
+Object {
+  "error": [Function],
+  "start": [Function],
+  "startAndSubscribe": [Function],
+  "stop": [Function],
+}
+`;
+
+exports[`(Container) ConnectionProvider will receive right props 1`] = `
+Object {
+  "available": false,
+  "error": null,
+  "pending": true,
+}
+`;

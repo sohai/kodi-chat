@@ -7,21 +7,18 @@ import configureStore from './store';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import Messages from './containers/Messages';
-import UsersInfo from './containers/Users';
+import ExtraInfo from './containers/ExtraInfo';
+import AppBar from './components/AppBar';
 const store = configureStore();
 
 const Index = () => (
   <Provider store={store}>
     <ConnectionProvider>
       <App>
-        <div className="root">
-          <header className="app-bar">
-            <h1>Kodify Chat</h1>
-            <UsersInfo />
-          </header>
-          <Messages />
-          <TextInput />
-        </div>
+        <AppBar />
+        <Messages />
+        <ExtraInfo />
+        <TextInput />
       </App>
     </ConnectionProvider>
   </Provider>

@@ -2,10 +2,10 @@
 
 exports[`(Component) TextInput should render 1`] = `
 <div
-  class="root"
+  className="root"
 >
   <input
-    class="input"
+    className="input"
   />
 </div>
 `;

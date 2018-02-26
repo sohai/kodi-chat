@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Component) ExtraInfo should render 1`] = `
+<div
+  class="root dark caption alignRight root"
+>
+  Info text
+</div>
+`;

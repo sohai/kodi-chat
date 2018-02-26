@@ -9,16 +9,14 @@ import usersHandler from '../handlers/users';
 
 const propTypes = PropTypes && {};
 
-export const TextInputRender = ({ value, onChange, onKeyPress, typing }) => (
-  <React.Fragment>
-    <div>{typing ? 'istyping' : ''}</div>
-    <TextInput value={value} onChange={onChange} onKeyPress={onKeyPress} />
-  </React.Fragment>
-)
+export const TextInputRender = ({
+  value,
+  onChange,
+  onKeyPress,
+}) => <TextInput value={value} onChange={onChange} onKeyPress={onKeyPress} />;
 
 export const mapStateToProps = state => ({
-  username: state.users.you.name,
-  typing: state.users.contact.typing
+  username: state.users.you.name
 });
 
 export const mapDispatchToProps = dispatch =>

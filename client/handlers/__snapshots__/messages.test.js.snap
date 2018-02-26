@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(handler) messages actions crators corect objects actions.addMessage 1`] = `
+Object {
+  "type": "ADD_MESSAGE",
+}
+`;
+
+exports[`(handler) messages actions crators corect objects actions.incMessage 1`] = `
+Object {
+  "type": "INC_MESSAGE",
+}
+`;
+
+exports[`(handler) messages actions crators corect objects actions.removeUserLastMessage 1`] = `
+Object {
+  "type": "REMOVE_USER_LAST_MESSAGE",
+}
+`;
+
+exports[`(handler) messages have right stucture 1`] = `
+Object {
+  "actions": Object {
+    "addAndSendMessage": [Function],
+    "addMessage": [Function],
+    "incMessage": [Function],
+    "removeMyLastMessage": [Function],
+    "removeUserLastMessage": [Function],
+  },
+  "reducer": [Function],
+}
+`;
+
+exports[`(handler) messages reducers handle actions actions.addMessage 1`] = `
+Array [
+  Object {
+    "message": "test",
+    "username": "username",
+  },
+]
+`;
+
+exports[`(handler) messages reducers handle actions actions.incMessage 1`] = `
+Array [
+  Object {
+    "message": "test",
+    "username": "username",
+  },
+]
+`;
+
+exports[`(handler) messages reducers handle actions actions.removeUserLastMessage 1`] = `
+Array [
+  Object {
+    "message": "test",
+    "username": "username",
+  },
+]
+`;
+
+exports[`(handler) messages reducers handle actions actions.removeUserLastMessage 2`] = `Array []`;

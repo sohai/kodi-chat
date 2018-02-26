@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`statefulProxy return right structure 1`] = `
+Object {
+  "onStart": [Function],
+  "onStop": [Function],
+  "proxy": Object {},
+  "restart": [Function],
+  "start": [Function],
+  "stop": [Function],
+}
+`;

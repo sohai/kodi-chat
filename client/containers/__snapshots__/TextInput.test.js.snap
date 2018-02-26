@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Container) TextInput should render 1`] = `<TextInput />`;
+
+exports[`(Container) TextInput will receive right actions 1`] = `
+Object {
+  "addAndSendMessage": [Function],
+  "addMessage": [Function],
+  "removeMyLastMessage": [Function],
+  "setName": [Function],
+  "setTyping": [Function],
+}
+`;
+
+exports[`(Container) TextInput will receive right props 1`] = `
+Object {
+  "username": "",
+}
+`;

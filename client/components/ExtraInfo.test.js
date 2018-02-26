@@ -1,14 +1,14 @@
 /* global render, describe, it, expect */
 /* eslint-disable import/first */
 import React from 'react';
-import MessagesList from './MessagesList';
+import ExtraInfo from './ExtraInfo';
 
-describe('(Component) MessagesList', () => {
+describe('(Component) ExtraInfo', () => {
   it('should render', () => {
     const props = {
-      items: []
+      info: 'Info text'
     };
-    const wrapper = render(<MessagesList {...props} />);
+    const wrapper = render(<ExtraInfo {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

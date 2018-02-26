@@ -7,8 +7,7 @@ import styles from './Message.css';
 import Typography from './Typography';
 
 const propTypes = PropTypes && {};
-const defaultProps = {
-};
+const defaultProps = {};
 
 export const MessageComponent = ({ item, className: classNameProp }) => {
   const className = classNames(
@@ -19,10 +18,29 @@ export const MessageComponent = ({ item, className: classNameProp }) => {
     },
     classNameProp
   );
-  return <div className={className}>
-    <Typography variant="body">{item.message}</Typography>
-    <Typography fade variant="caption" align="right">{item.username}</Typography>
-  </div>;
+  const textParts = item.message.split(':)');
+  return (
+    <div className={className}>
+      <Typography variant="body">
+        {textParts.map((text, idx) => {
+          return (
+            <span key={idx}>
+              {text}
+              {idx !== textParts.length - 1 && (
+                <img
+                  className={styles.emo}
+                  src="https://emojipedia-us.s3.amazonaws.com/thumbs/160/twitter/53/slightly-smiling-face_1f642.png"
+                />
+              )}
+            </span>
+          );
+        })}
+      </Typography>
+      <Typography fade variant="caption" align="right">
+        {item.username}
+      </Typography>
+    </div>
+  );
 };
 
 MessageComponent.displayName = 'Message';

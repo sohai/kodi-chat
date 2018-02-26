@@ -7,7 +7,7 @@
   "license": "MIT",
   "jest": {
     "testMatch": [
-      "<rootDir>/server/**/*.test.js"
+      "<rootDir>/client/**/*.test.js"
     ],
     "setupFiles": [
       "<rootDir>/client/test/setup.js"
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev-server": "pm2 start server/index.js --interpreter babel-node",
-    "test-server": "jest",
+    "test": "jest --forceExit",
     "webpack": "webpack -wd"
   },
   "devDependencies": {

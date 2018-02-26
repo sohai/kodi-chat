@@ -2,12 +2,14 @@ import express from 'express';
 import config from '../config';
 import http from 'http';
 import socketIO from 'socket.io';
+import { emotify } from './utils';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 let userCounter = 0;
 const userToSocketMap = {};
+
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
@@ -32,7 +34,7 @@ io.on('connection', socket => {
     delete userToSocketMap[socket.username];
     userCounter--;
   });
-  socket.on('new message', ({message, variant}) => {
+  socket.on('new message', ({ message, variant }) => {
     socket.broadcast.emit('new message', {
       username: socket.username,
       message,
@@ -46,7 +48,7 @@ io.on('connection', socket => {
   socket.on('oops', () => {
     socket.broadcast.emit('oops', socket.username);
   });
-  socket.on('typing', (isTyping) => {
+  socket.on('typing', isTyping => {
     socket.broadcast.emit('typing', isTyping);
   });
 });
